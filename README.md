@@ -31,6 +31,7 @@ ruby を用いた任意のタスクは ./lib/tasks/*.rake に追加すると機�
 動作環境
 ---
 ruby
+guard
 MacTex
 dvipdfmx
 platex
