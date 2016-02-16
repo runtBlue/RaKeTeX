@@ -1,0 +1,148 @@
+\documentclass[uplatex,a4paper,12pt]{ujreport}
+
+% ---------------------------------------
+% Preamble
+% ---------------------------------------
+
+\usepackage{amsmath,amssymb,theorem}
+\usepackage[dvipdfmx]{graphicx, color}
+% set "dvipdfmx" for output.
+\usepackage[dvipdfmx,bookmarks=true,bookmarksnumbered=true,bookmarkstype=toc=true,colorlinks=true,urlcolor=black,linkcolor=black,citecolor=black]{hyperref}
+
+% escape No Bounding Box.
+\usepackage{mediabb}
+% for longtable
+\usepackage{longtable}
+% for toprule
+\usepackage{booktabs}
+% use border box to use \begin{screen}.
+\usepackage{ascmac}
+
+\usepackage{calc,fancybox}
+\usepackage{enumerate}
+\usepackage{indentfirst,delarray}
+\usepackage{geometry}
+\usepackage{comment}
+\usepackage{multirow}
+\usepackage{lineno}
+
+\usepackage{here}
+
+% show line number for debag.
+% \pagewiselinenumbers
+
+% add frame with "verbatim"
+% \renewenvironment{verbatim}{\begin{screen}}{\end{screen}}
+
+% ---------------------------------------
+% UnSettlement
+% ---------------------------------------
+
+% \usepackage{ulinej}
+
+% ---------------------------------------
+% Font settings
+% ---------------------------------------
+
+\renewcommand{\baselinestretch}{1.1}
+
+\setlength\textwidth{452pt}%372pt
+\setlength\textheight{646pt}%586pt
+\setlength\oddsidemargin{0pt}%40pt
+\setlength\evensidemargin{0pt}%40pt
+\setlength\topmargin{-27pt}%23pt
+%\setlength\headheight{0mm}%12pt
+%\setlength\headsep{3mm}%25pt
+%\setlength{\footskip}{70pt}%30pt
+\setlength{\footskip}{70pt}%30pt
+\theorembodyfont{\normalfont}
+
+% ---------------------------------------
+% Macro Initialize
+% ---------------------------------------
+
+% Set FontCode (or PaperSize) to pipe dvipdfmx.
+\AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}
+% Set my macros.
+\input{lib/index.tex}
+% List hard macro hack.
+\makeatletter
+  % add chapter number with Figure-Number.
+  \@addtoreset{equation}{chapter}
+\makeatother
+
+
+% ---------------------------------------
+% Initialize
+% ---------------------------------------
+
+\title{
+	\vspace{1cm}{\Large 卒業論文}
+	\\
+	\vspace{2.5zw}
+	{\LARGE
+		Please input your doc title.
+	}
+}
+\author{
+	\vspace{5cm}
+	\\
+	田中大学 田中学部
+	\\
+	田中研究室
+	\\
+	田中 田中
+}
+\date{16 February, 2016}
+
+% ---------------------------------------
+% Main document
+% ---------------------------------------
+
+\begin{document}
+\maketitle
+
+% hack below abstract area
+\renewcommand{\abstractname}{{\huge\mc 概要}}
+\begin{abstract}
+	\input{sections/g00-overview.tex}
+\end{abstract}
+
+% toc
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+% chapters
+\chapter{序論}
+	\input{sections/g01-intro.tex}
+\chapter{原理}
+	\input{sections/g02-logic.tex}
+\chapter{実験装置}
+	\input{sections/g03-devices.tex}
+\chapter{測定}
+	\input{sections/g04-measure.tex}
+\chapter{実験データの解析}
+	\input{sections/g05-analize.tex}
+\chapter{結論とまとめ}
+	\input{sections/g06-conclusion.tex}
+
+% clearpage: get current pages output including all figures
+\clearpage
+	\input{sections/g08-apology}
+\clearpage
+
+% ---------------------------------------
+% List References
+% ---------------------------------------
+
+\renewcommand{\bibname}{参考文献}
+
+\begin{thebibliography}{99}
+	\bibitem{参考書}
+	「デジカメの画像処理」 映像メディア学会，2011
+	\bibitem{参考書}
+	「画像入力とカメラ」 電子情報通信学会，寺西信一，2012
+\end{thebibliography}
+
+\end{document}
+

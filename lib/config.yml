@@ -1,0 +1,39 @@
+
+pandoc:
+  src: "sections.src/*.md"
+
+moveTex:
+  src: "sections.src/*.tex"
+  dest: "sections/"
+
+xbb:
+  src: "figures/*.pdf"
+
+compileTex:
+  src: "thesis.tex"
+  preproduct: "thesis.dvi"
+  product: "thesis.pdf"
+  dest: "build/"
+
+clean:
+  src:
+    - "log"
+    - "dvi"
+    - "aux"
+    - "out"
+
+open:
+  product: "build/thesis.pdf"
+
+catalog:
+  src: ["figures/*.pdf"]
+  macro: "lib/macro/figures.tex"
+
+embody:
+  src: ["figures.src/*.png", "figures.src/*.eps", "figures.src/*.jpg"]
+  copy_src: ["figures.src/*.pdf"]
+  dest: "figures/"
+  delete: ["figures/*.pdf", "figures/*.xbb"]
+
+onweb:
+  url: "https://bitbucket.org"
